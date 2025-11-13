@@ -1,0 +1,3 @@
+export DJANGO_SUPERUSER_USERNAME=hoge
+export DJANGO_SUPERUSER_EMAIL=hoge@test.com
+export DJANGO_SUPERUSER_PASSWORD=hogehoge
