@@ -27,9 +27,6 @@ dev = [
 [tool.uv]
 link-mode = "copy"
 
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-
 [tool.django-stubs]
 django_settings_module = "config.settings"
 
