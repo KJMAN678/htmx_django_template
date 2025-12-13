@@ -54,8 +54,12 @@ $ source ./remake_container.sh
 ```sh
 $ docker compose exec backend uv run ruff check .
 
-# mypy による型ヒントチェック
-$ docker compose exec backend uv run mypy .
+# 最初の１回のみ実行、pyrefly の初期化
+$ docker compose exec backend uv run pyrefly init
+
+# pyrefly による型ヒントチェック
+$ docker compose exec backend uv run pyrefly check --summarize-errors
+$ docker compose exec backend uv run pyrefly check --remove-unused-ignores
 
 # djlint で HTML をチェック
 $ docker compose exec backend uv run djlint templates --extension html
