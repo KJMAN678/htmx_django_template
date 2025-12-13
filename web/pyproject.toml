@@ -49,3 +49,20 @@ select = [
    "I",
 ]
 
+[tool.taskipy.tasks]
+check = """
+uv run ruff check . \
+    && uv run pyrefly check --summarize-errors \
+    && uv run pyrefly check --remove-unused-ignores \
+    && uv run djlint templates --extension html
+"""
+
+fix = """
+uv run ruff check . --fix \
+    && uv run ruff format . \
+    && uv run djlint templates --extension html --reformat
+"""
+
+test = """
+uv run pytest
+"""
