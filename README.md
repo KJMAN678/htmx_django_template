@@ -5,10 +5,6 @@
 # app 追加
 $ mkdir web
 $ docker compose exec backend uv run django-admin startapp web web
-$ docker compose exec backend uv run ruff check . --fix
-$ docker compose exec backend uv run ruff format .
-# djlint によるフォーマット
-$ docker compose exec backend uv run djlint templates/*/*.html --extension=html.j2 --reformat
 
 http://127.0.0.1:8000/
 
@@ -18,7 +14,7 @@ $ docker compose exec backend uv tool run djcheckup http://host.docker.internal:
 
 ```sh
 # ライブラリ追加
-$ docker compose exec web uv add "Django==5.2.8"
+$ docker compose exec web uv add "Django==6.0"
 # dev用のライブラリ追加
 $ docker compose exec web uv add "djlint==1.36.4" --dev
 ```

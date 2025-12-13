@@ -36,6 +36,7 @@ BASE_APPS = [
 
 THIRD_PARTY_APPS = [
     "debug_toolbar",
+    "django_htmx",
 ]
 
 CUSTOM_APPS = [
@@ -55,7 +56,9 @@ BASE_MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-THIRD_PARTY_MIDDLEWARE = []
+THIRD_PARTY_MIDDLEWARE = [
+    "django_htmx.middleware.HtmxMiddleware",
+]
 
 if DEBUG:
     THIRD_PARTY_MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")
