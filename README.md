@@ -3,8 +3,8 @@
 
 ```sh
 # app 追加
-$ mkdir web
-$ docker compose exec backend uv run django-admin startapp web web
+$ mkdir sample
+$ docker compose exec backend uv run django-admin startapp sample sample
 
 http://127.0.0.1:8000/
 
