@@ -37,6 +37,8 @@ BASE_APPS = [
 THIRD_PARTY_APPS = [
     "debug_toolbar",
     "django_htmx",
+    "allauth",
+    "allauth.account",
 ]
 
 CUSTOM_APPS = [
@@ -58,6 +60,8 @@ BASE_MIDDLEWARE = [
 
 THIRD_PARTY_MIDDLEWARE = [
     "django_htmx.middleware.HtmxMiddleware",
+    # Add the account middleware:
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 if DEBUG:
@@ -147,3 +151,16 @@ INTERNAL_IPS = [
 ]
 
 DEBUG_TOOLBAR_CONFIG = {"SHOW_TOOLBAR_CALLBACK": lambda request: settings.DEBUG}
+
+# django-allauth
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+    # `allauth` specific authentication methods, such as login by email
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
+# 認証設定
+ACCOUNT_AUTHENTICATED_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/"
