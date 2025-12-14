@@ -23,6 +23,7 @@ dev = [
     "django-stubs==5.2.8",
     "pyrefly==0.45.2",
     "taskipy==1.14.1",
+    "pytest-randomly==4.0.1",
 ]
 
 [tool.uv]

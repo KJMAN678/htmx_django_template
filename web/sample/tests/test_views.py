@@ -18,3 +18,8 @@ class TestIndexView:
         SampleModelFactory.create_batch(3)
         response = client.get("")
         assert len(response.context["samples"]) == 3
+
+    def test_clicked_view(self, client):
+        response = client.get("/clicked")
+        assert response.status_code == 200
+        assert response.context["message"] == "Button clicked!"
