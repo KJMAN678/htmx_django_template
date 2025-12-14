@@ -4,20 +4,20 @@
 ```sh
 # app 追加
 $ mkdir sample
-$ docker compose exec backend uv run django-admin startapp sample sample
+$ docker compose exec app uv run django-admin startapp sample sample
 
 http://127.0.0.1:8000/
 http://127.0.0.1:8000/admin/
 
 # セキュリティチェック
-$ docker compose exec backend uv tool run djcheckup http://host.docker.internal:8000/web/
+$ docker compose exec app uv tool run djcheckup http://host.docker.internal:8000/web/
 ```
 
 ```sh
 # ライブラリ追加
-$ docker compose exec web uv add "Django==6.0"
+$ docker compose exec app uv add "Django==6.0"
 # dev用のライブラリ追加
-$ docker compose exec web uv add "djlint==1.36.4" --dev
+$ docker compose exec app uv add "djlint==1.36.4" --dev
 ```
 
 ### Devin
@@ -49,28 +49,28 @@ $ source ./remake_container.sh
 
 #### 5.SetUp Lint
 ```sh
-$ docker compose exec backend uv run task check
+$ docker compose exec app uv run task check
 
 - 下記を実行
 # ruff によるチェック
-$ docker compose exec backend uv run ruff check .
+$ docker compose exec app uv run ruff check .
 # pyrefly による型ヒントチェック
-$ docker compose exec backend uv run pyrefly check --summarize-errors
-$ docker compose exec backend uv run pyrefly check --remove-unused-ignores
+$ docker compose exec app uv run pyrefly check --summarize-errors
+$ docker compose exec app uv run pyrefly check --remove-unused-ignores
 # djlint で HTML をチェック
-$ docker compose exec backend uv run djlint templates --extension html
+$ docker compose exec app uv run djlint templates --extension html
 
 # 参考) 最初の１回のみ実行、pyrefly の初期化
-$ docker compose exec backend uv run pyrefly init
+$ docker compose exec app uv run pyrefly init
 ```
 
 #### 6.SetUp Tests
 - no tests ran in 0.00s だと Devin の Verify が通らないっぽい
 ```sh
-$ docker compose exec backend uv run task test
+$ docker compose exec app uv run task test
 
 - 下記を実行
-$ docker compose exec backend uv run pytest
+$ docker compose exec app uv run pytest
 ```
 
 ### 7.Setup Local App
@@ -88,25 +88,25 @@ $ http://127.0.0.1:8000/がアプリケーションのURL
 
 #### Migration
 ```sh
-$ docker compose exec backend uv run task migration
+$ docker compose exec app uv run task migration
 
 - 下記を実行
-$ docker compose exec backend uv run python manage.py makemigrations
-$ docker compose exec backend uv run python manage.py migrate
+$ docker compose exec app uv run python manage.py makemigrations
+$ docker compose exec app uv run python manage.py migrate
 ```
 
 #### 修正
 ```sh
-$ docker compose exec backend uv run task fix
+$ docker compose exec app uv run task fix
 
 - 下記を実行
-$ docker compose exec backend uv run ruff check . --fix \
-    && docker compose exec backend uv run ruff format . \
-    && docker compose exec backend uv run djlint templates --extension html --reformat
+$ docker compose exec app uv run ruff check . --fix \
+    && docker compose exec app uv run ruff format . \
+    && docker compose exec app uv run djlint templates --extension html --reformat
 ```
 
 ### カスタムコマンド
 ```sh
 - SampleModel に 3 件データのダミーデータを追加
-$ docker compose exec backend uv run python manage.py sample_command 3
+$ docker compose exec app uv run python manage.py sample_command 3
 ```

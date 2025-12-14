@@ -1,5 +1,5 @@
 services:
-  backend:
+  app:
     build:
       context: ./web
     volumes:
@@ -17,6 +17,14 @@ services:
     command: sh /app/start.sh
     depends_on:
       - db
+
+  web:
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - app
 
   db:
     image: postgres:18.1-alpine3.22
