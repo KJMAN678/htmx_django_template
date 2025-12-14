@@ -86,7 +86,7 @@ $ http://127.0.0.1:8000/がアプリケーションのURL
 - テストは pytest を利用する
 を入力
 
-#### Make Migration
+#### Migration
 ```sh
 $ docker compose exec backend uv run task migration
 

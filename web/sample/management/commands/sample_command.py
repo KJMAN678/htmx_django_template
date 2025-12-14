@@ -8,7 +8,7 @@ class Command(BaseCommand):
     help = "Sample command"
 
     def add_arguments(self, parser):
-        parser.add_argument("range_num", nargs="+", type=int)
+        parser.add_argument("range_num", nargs=1, type=int)
 
     def handle(self, *args, **options):
         fake = Faker("ja_JP")
