@@ -9,6 +9,7 @@ dependencies = [
     "Django==6.0",
     "django-htmx==1.27.0",
     "psycopg2==2.9.11",
+    "pydantic==2.12.5",
 ]
 
 [dependency-groups]
@@ -22,6 +23,7 @@ dev = [
     "django-stubs==5.2.8",
     "pyrefly==0.45.2",
     "taskipy==1.14.1",
+    "pytest-randomly==4.0.1",
 ]
 
 [tool.uv]
@@ -63,3 +65,13 @@ uv run ruff check . --fix \
 test = """
 uv run pytest
 """
+
+migration = """
+uv run python manage.py makemigrations \
+    && uv run python manage.py migrate
+"""
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+# -- recommended but optional:
+python_files = ["test_*.py", "*_test.py", "testing/python/*.py"]

@@ -40,7 +40,7 @@ THIRD_PARTY_APPS = [
 ]
 
 CUSTOM_APPS = [
-    "stock",
+    "sample",
 ]
 
 INSTALLED_APPS = BASE_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
