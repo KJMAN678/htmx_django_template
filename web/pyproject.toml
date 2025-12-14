@@ -63,3 +63,13 @@ uv run ruff check . --fix \
 test = """
 uv run pytest
 """
+
+migration = """
+uv run python manage.py makemigrations \
+    && uv run python manage.py migrate
+"""
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+# -- recommended but optional:
+python_files = ["test_*.py", "*_test.py", "testing/python/*.py"]

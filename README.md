@@ -7,6 +7,7 @@ $ mkdir sample
 $ docker compose exec backend uv run django-admin startapp sample sample
 
 http://127.0.0.1:8000/
+http://127.0.0.1:8000/admin/
 
 # セキュリティチェック
 $ docker compose exec backend uv tool run djcheckup http://host.docker.internal:8000/web/
@@ -85,6 +86,15 @@ $ http://127.0.0.1:8000/がアプリケーションのURL
 - テストは pytest を利用する
 を入力
 
+#### Make Migration
+```sh
+$ docker compose exec backend uv run task migration
+
+- 下記を実行
+$ docker compose exec backend uv run python manage.py makemigrations
+$ docker compose exec backend uv run python manage.py migrate
+```
+
 #### 修正
 ```sh
 $ docker compose exec backend uv run task fix
@@ -93,4 +103,10 @@ $ docker compose exec backend uv run task fix
 $ docker compose exec backend uv run ruff check . --fix \
     && docker compose exec backend uv run ruff format . \
     && docker compose exec backend uv run djlint templates --extension html --reformat
+```
+
+### カスタムコマンド
+```sh
+- SampleModel に 3 件データのダミーデータを追加
+$ docker compose exec backend uv run python manage.py sample_command 3
 ```
