@@ -10,6 +10,7 @@ dependencies = [
     "django-htmx==1.27.0",
     "psycopg2==2.9.11",
     "pydantic==2.12.5",
+    "django-allauth==65.13.1",
 ]
 
 [dependency-groups]
