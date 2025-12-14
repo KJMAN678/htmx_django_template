@@ -13,7 +13,7 @@
         {% load account %}
         {% if user.is_authenticated %}
             <p>Welcome, {{ user.username }}!</p>
-            <button hx-get="{% url 'account_logout' %}"
+            <button hx-post="{% url 'account_logout' %}"
                     hx-target="body"
                     hx-swap="innerHTML">Logout</button>
         {% endif %}
