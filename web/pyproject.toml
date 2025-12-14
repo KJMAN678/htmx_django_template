@@ -9,6 +9,7 @@ dependencies = [
     "Django==6.0",
     "django-htmx==1.27.0",
     "psycopg2==2.9.11",
+    "pydantic==2.12.5",
 ]
 
 [dependency-groups]
