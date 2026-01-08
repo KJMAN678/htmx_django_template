@@ -32,7 +32,10 @@ $ docker compose exec app uv add "djlint==1.36.4" --dev
 # 環境変数用のファイル作成
 $ touch .envrc
 $ cp .envrc.example .envrc
+
 $ direnv allow
+or
+$ source .envrc
 ```
 
 - ローカル用
